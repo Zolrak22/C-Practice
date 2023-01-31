@@ -24,13 +24,16 @@ int main()
         (float)windowDimensions/2.0f - 8.0f * (0.5f * (float)knight.height),
 
     };
+    // 1: facing right, -1: facing left
+    float rightLeft{1.0f};
+
     SetTargetFPS(60);
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(WHITE);
 
-        // character movement
+        // character directional movement
         Vector2 direction{};
         if (IsKeyDown(KEY_A)) direction.x -= 1.0;
         if (IsKeyDown(KEY_D)) direction.x += 1.0;
@@ -38,16 +41,16 @@ int main()
         if (IsKeyDown(KEY_S)) direction.y += 1.0;
         if (Vector2Length(direction) != 0.0)
         {
-            // set mapPos = mapPos - direction
-            
+            // set mapPos = mapPos - direction            
             mapPos = Vector2Subtract(mapPos,Vector2Scale(Vector2Normalize(direction),speed));
+            direction.x < 0.0f ? rightLeft = -1.0f : rightLeft = 1.0f;
         }
 
         // draw the map
         DrawTextureEx( map, mapPos, 0.0, 4.0, WHITE);
 
         // draw the character
-        Rectangle source{0.f, 0.f,(float)knight.width/6.0f, (float)knight.height },
+        Rectangle source{0.f, 0.f,rightLeft * (float)knight.width/6.0f, (float)knight.height },
         dest{(float)knightPos.x, (float)knightPos.y, 8.0f * (float)knight.width/6.0f, 8.0f * (float)knight.height};
         DrawTexturePro(knight,source, dest, Vector2{}, 0.0f, WHITE );
 
