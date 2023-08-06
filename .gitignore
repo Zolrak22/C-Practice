@@ -1,0 +1,18 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/.vs/C-Practice
+/.vs/C-Practice/FileContentIndex
+/.vs/C-Practice/FileContentIndex/c7027f66-8dd5-4eff-8668-615a317d650d.vsidx
+/.vs/C-Practice/FileContentIndex/read.lock
+/.vs/C-Practice/v17
+/.vs/C-Practice/v17/.wsuo
+/.vs/C-Practice/v17/Browse.VC.db
+/.vs/C-Practice/v17/Browse.VC.db-shm
+/.vs/C-Practice/v17/Browse.VC.db-wal
+/.vs/C-Practice/v17/Browse.VC.opendb
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
