@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "C-Practice/GameDev"
+		},
+		{
+			"path": "C-Practice/General"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"ostream": "cpp",
+			"iostream": "cpp",
+			"vector": "cpp",
+			"xstring": "cpp"
+		}
+	}
+}
