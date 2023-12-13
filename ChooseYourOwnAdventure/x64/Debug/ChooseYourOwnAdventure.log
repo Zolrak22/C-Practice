@@ -1,0 +1,4 @@
+﻿  ChooseYourOwnAdventure.cpp
+D:\GitHub\C-Practice\ChooseYourOwnAdventure\ChooseYourOwnAdventure.cpp(13,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\GitHub\C-Practice\ChooseYourOwnAdventure\ChooseYourOwnAdventure.cpp(23,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  ChooseYourOwnAdventure.vcxproj -> D:\GitHub\C-Practice\ChooseYourOwnAdventure\x64\Debug\ChooseYourOwnAdventure.exe

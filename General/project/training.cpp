@@ -2,14 +2,16 @@
 #include <climits>
 #include <vector>
 #include <cstdlib>
+#include <ctime>  
 
 int rollDie(int i)
 {
     int roll;
     int min = 1; // the min number a die can roll is 1
     int max = i;// this->dieSize; // the max value is the die size
-
-    roll = rand() % (max - min + 1) + min;
+    
+    srand(time(nullptr));
+    roll = rand() % (max - min + 1);
 
     return roll;
 }
