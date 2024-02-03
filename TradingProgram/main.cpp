@@ -5,7 +5,33 @@
 #include <string>
 #include <vector>
 
+enum class OrderBookType { bid, ask };
 bool appOn{ true };
+
+class OrderBookEntry 
+{
+	public:
+		OrderBookEntry(	double _price,
+						double _amount,
+						std::string _timestamp,
+						std::string _product,
+						OrderBookType _orderType)
+		//	An Initiation list
+		:	price(_price),
+			amount(_amount),
+			timestamp(_timestamp),
+			product(_product),
+			orderType(_orderType)
+		{	
+
+		}
+
+		double price;
+		double amount;  
+		std::string timestamp;
+		std::string product;
+		OrderBookType orderType;
+};
 
 static void printMenu()
 {
@@ -109,19 +135,45 @@ void processUserOption(int userOption)
 
 int main()
 {
+	/*
 	double price = 5319.450228;
 	double amount = 0.00020075;
 	std::string timestamp{ "2020/03/17 17:01:24.884492" };
 	std::string product{ "BTC/USDT" };
-	enum class OrderBookType{bid, ask};
-	OrderBookType orderType = OrderBookType::bid;
+	OrderBookType orderType = OrderBookType::bid;*/
 
+	/*std::vector<double> prices;
+	std::vector<double> amounts;
+	std::vector<std::string> timestamps;
+	std::vector<std::string> products;
+	std::vector<OrderBookType> orderTypes;
+
+	prices.push_back(5319.450228);
+	amounts.push_back(0.00020075);
+	timestamps.push_back("2020/03/17 17:01:24.884492");
+	products.push_back("BTC/USDT");
+	orderTypes.push_back(OrderBookType::bid);
+
+	std::cout << "prices: " << prices[0] << std::endl;
+	std::cout << "amounts: " << amounts[0] << std::endl;
+	std::cout << "timestamps: " << timestamps[0] << std::endl;
+	std::cout << "products: " << products[0] << std::endl;
+	
 	while (appOn == true)
 	{
 		printMenu();
 		int userOption = getUserOption();
 		processUserOption(userOption);
 	}
-    return 0;
+	*/
+
+	OrderBookEntry order1{ 10000 ,
+							0.002,
+							"2020/03/17 17:01:24.884492",
+							"BTC/USDT", OrderBookType::bid };
+
+	std::cout << "The price is " << order1.price << std::endl;
+
+	return 0;
 }
 
