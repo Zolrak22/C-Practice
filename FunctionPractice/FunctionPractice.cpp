@@ -547,6 +547,7 @@ int main() {
 }
 */
 
+/*
 //How Function Calls Work
 #include <iostream>
 
@@ -590,3 +591,46 @@ int main() {
     *   pop the parameters
     *   pop the return value
     */
+
+//Recursive Functions
+/*
+//Recursion Factorial example
+#include <iostream>
+
+unsigned long long factorial(unsigned long long n) {
+    if (n == 0)
+        return 1;                           // base case
+    return n * factorial(n - 1);             // recursive case
+}
+
+int main() {
+    std::cout << factorial(30) << std::endl; // 6
+    std::cout << factorial(8) << std::endl; // 40320
+    std::cout << factorial(12) << std::endl; // 479001600
+    std::cout << factorial(20) << std::endl; // 2432902008176640000
+    return 0;
+}
+*/
+/*
+// Recursion Fibonacci example
+#include <iostream>
+
+unsigned long long fibonacci(unsigned long long n) {
+    if (n <= 1)
+        return n;                               // base case
+    return fibonacci(n - 1) + fibonacci(n - 2); // recursion
+}
+
+int main() {
+    std::cout << fibonacci(5) << std::endl;     // 5
+    std::cout << fibonacci(30) << std::endl;    // 8382040
+    std::cout << fibonacci(40) << std::endl;    // 102334155
+    return 0;
+}
+*/
+
+#include <iostream>
+
+int main() {
+    std::cout << 12345 % 10 << std::endl;
+}
