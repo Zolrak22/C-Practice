@@ -1,6 +1,3 @@
-// Updated C++ Template.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
 #include <string>
 #include <vector>
@@ -133,47 +130,91 @@ void processUserOption(int userOption)
 	}
 }
 
+double computeAveragePrice(std::vector<OrderBookEntry>& entries) {
+	double averagePrice = 0;
+
+	for (OrderBookEntry& entry : entries)	{
+		averagePrice += entry.price;
+	}
+	return averagePrice / entries.size();
+}
+
+double computeLowPrice(std::vector<OrderBookEntry>& entries) {
+	double lowestPrice = entries.at(0).price;
+	for (OrderBookEntry& entry : entries) {
+		if (entry.price < lowestPrice) {
+			lowestPrice = entry.price;
+		}
+	}
+	return lowestPrice;
+}
+
+double computeHighPrice(std::vector<OrderBookEntry>& entries) {
+	double highestPrice = entries.at(0).price;
+	for (OrderBookEntry& entry : entries) {
+		if (entry.price > highestPrice) {
+			highestPrice = entry.price;
+		}
+	}
+	return highestPrice;
+}
+
+
+double computePriceSpread(std::vector<OrderBookEntry>& entries) {
+	double lowestPrice = entries.at(0).price;
+	double highestPrice = entries.at(0).price;
+
+	for (OrderBookEntry& entry : entries) {
+		if (entry.price < lowestPrice) {
+			lowestPrice = entry.price;
+		}
+		if (entry.price > highestPrice) {
+			highestPrice = entry.price;
+		}
+	}
+	return highestPrice - lowestPrice;
+}
+
 int main()
 {
-	/*
-	double price = 5319.450228;
-	double amount = 0.00020075;
-	std::string timestamp{ "2020/03/17 17:01:24.884492" };
-	std::string product{ "BTC/USDT" };
-	OrderBookType orderType = OrderBookType::bid;*/
 
-	/*std::vector<double> prices;
-	std::vector<double> amounts;
-	std::vector<std::string> timestamps;
-	std::vector<std::string> products;
-	std::vector<OrderBookType> orderTypes;
-
-	prices.push_back(5319.450228);
-	amounts.push_back(0.00020075);
-	timestamps.push_back("2020/03/17 17:01:24.884492");
-	products.push_back("BTC/USDT");
-	orderTypes.push_back(OrderBookType::bid);
-
-	std::cout << "prices: " << prices[0] << std::endl;
-	std::cout << "amounts: " << amounts[0] << std::endl;
-	std::cout << "timestamps: " << timestamps[0] << std::endl;
-	std::cout << "products: " << products[0] << std::endl;
+	std::vector<OrderBookEntry> entries;
 	
-	while (appOn == true)
-	{
-		printMenu();
-		int userOption = getUserOption();
-		processUserOption(userOption);
+	entries.push_back(	OrderBookEntry{10000,
+										0.002,
+										"2020/03/17 17:01:24.884492",
+										"BTC/USDT",
+										OrderBookType::bid}	);
+
+	entries.push_back(	OrderBookEntry{ 5000,
+										0.006,
+										"2024/03/17 17:01:24.894492",
+										"BTC/USDT",
+										OrderBookType::ask}	);
+
+	entries.push_back(OrderBookEntry{	2020,
+										0.006,
+										"2024/03/17 17:01:24.894492",
+										"BTC/USDT",
+										OrderBookType::bid });
+
+	entries.push_back(OrderBookEntry{ 40,
+									0.40,
+									"2024/03/17 17:01:24.894492",
+									"BTC/USDT",
+									OrderBookType::bid });
+
+	for (const auto& entry : entries) {
+		std::cout << "Price: " << entry.price
+			<< ", Amount: " << entry.amount
+			<< ", Timestamp: " << entry.timestamp
+			<< ", Product: " << entry.product << std::endl;
 	}
-	*/
 
-	OrderBookEntry order1{ 10000 ,
-							0.002,
-							"2020/03/17 17:01:24.884492",
-							"BTC/USDT", OrderBookType::bid };
-
-	std::cout << "The price is " << order1.price << std::endl;
-
+	std::cout << "The average price is " << computeAveragePrice(entries) << "." << std::endl;
+	std::cout << "The lowest price is " << computeLowPrice(entries) << "." << std::endl;
+	std::cout << "The highest price is " << computeHighPrice(entries) << "." << std::endl;
+	std::cout << "The Price Spread is " << computePriceSpread(entries) << "." << std::endl;
 	return 0;
 }
 

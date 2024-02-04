@@ -56,12 +56,12 @@ int main() {
 /*
 #include <iostream>
 void name() {
-    std::cout << " honey bunny";
+    std::cout << " Chucky bunny";
 }
 void iCare() {
     std::cout << "Hello";
     name();
-    std::cout <<", know that I love you!!!" << std::endl;
+    std::cout <<", know that we care about you!!!" << std::endl;
 }
 
 int main() {
@@ -122,7 +122,7 @@ void volumeCylinder() {
 void helloWorld(std::string name, int age);
 
 int main() {
-    helloWorld("neeta", 10);
+    helloWorld("Neeta", 10);
     return 0;
 }
 
@@ -131,8 +131,8 @@ int main() {
 
 void helloWorld(std::string name, int age) 
 {
-    std::cout << "Hello " + name + ", it's lovely to meet you. " << std::endl;
-    if (age >= 18)
+    std::cout << "Hello " + name + ",   welcome to Jesus' bar, it's lovely to meet you. " << std::endl;
+    if (age >= 21)
         std::cout << "It's a good thing you are " << age << ", or I wouldn't be able to offer you a drink." << std::endl;
     else
         std::cout << "I see, so you are " << age << ", maybe come back when you are a few years older" << std::endl;
