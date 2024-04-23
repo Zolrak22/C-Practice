@@ -6,86 +6,80 @@
 #include <string>
 using std::cout; using std::cin; using std::endl; using std::string;   //std namespace usage
 
-class Animal
+class Creature
 {
 public:
-	Animal();
-	Animal(string name, int age, float health);
+	Creature();
 
+	void SetName(string name);
+	string GetName();
+
+	float GetHealth();
+	
+	void TakeDamage(float damage);
+
+private:
 	string Name;
-	int Age;
 	float Health;
-
-	void Report();
-};
-
-class Dog :public Animal
-{
-public:
-	Dog();
-	Dog(string name, int age, float health);
-
-	void Speak();
-};
-
-class Corgi : public Dog
-{
 
 };
 
 int main()
 {
-	Corgi corgi;
-	
-	corgi.Speak();
-	corgi.Report();
+	Creature Igor;
+	Igor.SetName("Igor");
 
-	Dog dog("Spot", 4, 85.f);
+	cout << "Its name: " <<  Igor.GetName() << endl;
+	cout << "Health: " << Igor.GetHealth() << endl;
 
-	dog.Speak();
+	float giveDamage{ 34.50f };
+
+	cout << Igor.GetName() <<" will now take " << giveDamage << " damage!" << endl;
+
+	Igor.TakeDamage(giveDamage);
 
 	system("pause");
 	return 0;
 }
 
-Animal::Animal()
+Creature::Creature()
 {
-	cout << "An ANIMAL is born!" << endl;
-
-	Name = "DEFAULT";
-	Age = 2;
 	Health = 100.0f;
+	cout << "A creature has been created! " << endl;
 }
 
-Animal::Animal(string name, int age, float health):
-	Name(name), Age(age), Health(health)
+void Creature::SetName(string name)
 {
-	Report();
+	Name = name;
 }
 
-void Animal::Report()
+string Creature::GetName()
 {
-	cout << endl;
-	cout << "Name: " << Name << endl;
-	cout << "Age: " << Age << endl;
-	cout << "Health: " << Health << endl;
-	cout << endl;
+	return Name;
 }
 
-Dog::Dog()
+
+float Creature::GetHealth()
 {
-	cout << "A DOG is born!" << endl;
+	return Health;
 }
 
-Dog::Dog(string name, int age, float health) :
-	Animal(name, age, health)
+void Creature::TakeDamage(float damage)
 {
-	
-}
+	float TotalHealth;
+	TotalHealth = Health - damage;
 
-void Dog::Speak()
-{
-	cout << "The dog says 'Woof! Woof!'" << endl;
+	if (TotalHealth <= 0.0f)
+	{
+		cout << GetName() << " has died!" << endl;
+	}
+
+	else
+	{
+		Health -= damage;
+	}
+
+	cout << "Health: " << GetHealth() << endl;
 }
 //// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 //// Debug program: F5 or Debug > Start Debugging menu
