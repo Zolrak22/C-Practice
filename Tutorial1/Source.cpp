@@ -18,6 +18,10 @@ public:
 	
 	void TakeDamage(float damage);
 
+	void DisplayName(string name);
+	void DisplayHealth(float health);
+	void DisplayLevel(int Level);
+
 private:
 	string Name;
 	float Health;
@@ -31,21 +35,17 @@ class Goblin : public Creature
 {
 public:
 	Goblin();
+
+	int GetLevel();
 };
 
 int main()
 {
-	Creature Igor;
-	Igor.SetName("Igor");
+	Goblin Gobby;
 
-	cout << "Its name: " <<  Igor.GetName() << endl;
-	cout << "Health: " << Igor.GetHealth() << endl;
-
-	float giveDamage{ 34.50f };
-
-	cout << Igor.GetName() <<" will now take " << giveDamage << " damage!" << endl;
-
-	Igor.TakeDamage(giveDamage);
+	Gobby.DisplayName(Gobby.GetName());
+	Gobby.DisplayHealth(Gobby.GetHealth());
+	Gobby.DisplayLevel(Gobby.GetLevel());
 
 	system("pause");
 	return 0;
@@ -97,5 +97,26 @@ Goblin::Goblin()
 
 	SetName("Gobby");
 }
+
+int Goblin::GetLevel()
+{
+	return Level;
+}
+
+void Creature::DisplayName(string name)
+{
+	cout << "Name: " << name << endl;
+}
+
+void Creature::DisplayHealth(float health)
+{
+	cout << "Health: " << health << endl;
+}
+
+void Creature::DisplayLevel(int level)
+{
+	cout << "Level: " << level << endl;
+}
+
 //// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 //// Debug program: F5 or Debug > Start Debugging menu
