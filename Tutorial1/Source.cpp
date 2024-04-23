@@ -22,6 +22,15 @@ private:
 	string Name;
 	float Health;
 
+protected:
+	int Level;
+
+};
+
+class Goblin : public Creature
+{
+public:
+	Goblin();
 };
 
 int main()
@@ -80,6 +89,13 @@ void Creature::TakeDamage(float damage)
 	}
 
 	cout << "Health: " << GetHealth() << endl;
+}
+
+Goblin::Goblin()
+{
+	Level = 1;
+
+	SetName("Gobby");
 }
 //// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 //// Debug program: F5 or Debug > Start Debugging menu
