@@ -6,27 +6,20 @@
 #include <string>
 using std::cout; using std::cin; using std::endl; using std::string;   //std namespace usage
 
-struct Character
+class Character
 {
+public:
 	Character();
-	void PrintHealth();
-	string Name;
-	float Health;
+	~Character();
+
+	int* CharacterAge;
+	float* CharacterHealth;
 };
 
 int main()
 {
-	for (int i = 0; i < 10; i++)
-	{
-		Character* PtrToChar = new Character(); // Stored in the Heap
-
-		cout << PtrToChar->Name << endl;
-
-		PtrToChar->PrintHealth();
-
-		delete PtrToChar;
-	}
-
+	Character* Char = new Character;
+	delete Char;
 
 
 	system("pause");
@@ -35,13 +28,18 @@ int main()
 
 Character::Character()
 {
-	Name = "Default Name";
-	Health = 100.0f;
+	cout << "A new character is born!" << endl;
+
+	CharacterAge = new int(22);
+	CharacterHealth = new float(100.0f);
 }
 
-void Character::PrintHealth()
+Character::~Character()
 {
-	cout << "Health = " << Health << endl;
+	cout << "The character has perished!" << endl;
+
+	delete CharacterAge;
+	delete CharacterHealth;
 }
 
 //// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
