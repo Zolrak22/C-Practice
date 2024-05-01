@@ -6,41 +6,78 @@
 #include <string>
 using std::cout; using std::cin; using std::endl; using std::string;   //std namespace usage
 
-class Character
+class Item
 {
 public:
-	Character();
-	~Character();
-
-	int* CharacterAge;
-	float* CharacterHealth;
+	Item()
+	{
+		cout << "An item has been created!" << endl;
+	}
+	~Item()
+	{
+		cout << "An item has been destroyed!" << endl;
+	}
 };
+
+class Critter
+{
+public:
+
+	Critter()
+	{
+		cout << "A critter is born!" << endl;
+		++CritterCount;
+	}
+	~Critter()
+	{
+		cout << "A critter has been destroyed!" << endl;
+		--CritterCount;
+	}
+
+	static void AnnounceCount()
+	{
+		cout << "Critter Count: " << CritterCount << endl;
+	}
+
+	static int CritterCount;
+
+};
+
+int Critter::CritterCount = 0;
+
+void AddToCount()
+{
+	static int count = 0;
+	count++;
+	cout << count << endl;
+}
 
 int main()
 {
-	Character* Char = new Character;
-	delete Char;
+
+
+
+	Critter::AnnounceCount();
+
+	Critter* crit = new Critter;
+	Critter::AnnounceCount();
+	delete crit;
+	Critter::AnnounceCount();
+
+	static Item item;
+
+	for (int i = 0; i < 100; i++) 
+	{
+		AddToCount();
+	}
+
 
 
 	system("pause");
 	return 0;
 }
 
-Character::Character()
-{
-	cout << "A new character is born!" << endl;
 
-	CharacterAge = new int(22);
-	CharacterHealth = new float(100.0f);
-}
-
-Character::~Character()
-{
-	cout << "The character has perished!" << endl;
-
-	delete CharacterAge;
-	delete CharacterHealth;
-}
 
 //// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 //// Debug program: F5 or Debug > Start Debugging menu
