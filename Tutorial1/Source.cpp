@@ -18,7 +18,7 @@ public:
 	virtual void BeginPlay() override;
 };
 
-class Pawn : public Actor 
+class Pawn : public Actor
 {
 public:
 	virtual void BeginPlay() override;
@@ -27,18 +27,20 @@ public:
 int main()
 {
 
-	//Object* obj = new Object;
-	//obj->BeginPlay();
+	Object* ptrToObject = new Object;
+	Actor* ptrToActor = new Actor;
+	Pawn* ptrToPawn = new Pawn;
 
-	//Actor* act = new Actor;
-	//act->BeginPlay();
+	Object* ObjectArray[] = { ptrToObject, ptrToActor, ptrToPawn };
 
-	Pawn* pwn = new Pawn;
-	pwn->BeginPlay();
+	for (int i = 0; i < 3; i++)
+	{
+		ObjectArray[i]->BeginPlay();
+	}
 
-	//delete obj;
-	//delete act;
-	delete pwn;
+	delete ptrToObject;
+	delete ptrToActor;
+	delete ptrToPawn;
 
 	system("pause");
 	return 0;
@@ -46,20 +48,17 @@ int main()
 
 void Object::BeginPlay()
 {
-	cout << "Object BeginPlay() called." << endl;
+	cout << "Object/Parent BeginPlay() called." << endl << endl;
 }
 
 void Actor::BeginPlay()
 {
-	cout << "Actor BeginPlay() called." << endl;
-	Object::BeginPlay();
+	cout << "Actor/Child BeginPlay() called." << endl << endl;
 }
 
 void Pawn::BeginPlay()
 {
-	cout << "Pawn BeginPlay() called." << endl;
-	Object::BeginPlay();
-	Actor::BeginPlay();
+	cout << "Pawn/Grandchild BeginPlay() called." << endl << endl;
 }
 
 //// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
